@@ -17,16 +17,27 @@ public class Timex3CsvFormatter implements ResultFormatter {
 
             String sentence = jcas.getDocumentText();
             String expression = sentence.substring(timex.getBegin(), timex.getEnd());
+            String timexValue = timex.getTimexValue();
 
             // input value|type|prepared value|tid
             csv.append(sentence).append('|')
                     .append(escape(timex.getTimexType())).append('|')
                     .append(expression).append("|")
-                    .append(escape(timex.getTimexValue()))
+                    .append(filter(escape(timex.getTimexValue()), timex.getTimexType()))
                     .append('\n');
         }
 
         return csv.toString();
+    }
+
+    private static String filter(String value, String type) {
+        if (type.equals("DURATION") || type.equals("SET"))
+            return "";
+        else if (value.equals("PRESENT_REF"))
+            return "";
+        else if (value.startsWith("XXXX"))
+            return "";
+        return value;
     }
 
     private static String escape(String value) {

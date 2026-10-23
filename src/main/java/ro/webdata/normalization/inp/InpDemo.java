@@ -26,13 +26,12 @@ public class InpDemo {
 
     static void main(String[] args) throws DocumentCreationTimeMissingException, IOException {
         String timespan_additional = InpParser.toCsv(PATH_INPUT_ADDITIONAL_TIMESPAN_FILE);
-        String timespan_all = InpParser.toCsv(PATH_INPUT_ALL_TIMESPAN_FILE);
-        String timespan_unique = InpParser.toCsv(PATH_INPUT_UNIQUE_TIMESPAN_FILE);
-
         File.write(timespan_additional, PATH_OUTPUT_ADDITIONAL_TIMESPAN_FILE, false);
-        File.write(timespan_all, PATH_OUTPUT_ALL_TIMESPAN_FILE, false);
-        File.write(timespan_unique, PATH_OUTPUT_UNIQUE_TIMESPAN_FILE, false);
 
-        System.out.println();
+        String timespan_all = InpParser.toCsv(PATH_INPUT_ALL_TIMESPAN_FILE);
+        File.write(timespan_all, PATH_OUTPUT_ALL_TIMESPAN_FILE, false);
+
+        String timespan_unique = InpParser.toCsv(PATH_INPUT_UNIQUE_TIMESPAN_FILE);
+        File.write(timespan_unique, PATH_OUTPUT_UNIQUE_TIMESPAN_FILE, false);
     }
 }
