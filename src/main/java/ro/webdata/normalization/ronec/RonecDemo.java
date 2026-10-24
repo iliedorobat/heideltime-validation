@@ -20,7 +20,7 @@ public class RonecDemo {
         String ronec_validation = RonecParser.toCsv(VALID_INPUT_PATH);
         File.write(ronec_validation, VALID_OUTPUT_PATH, false);
 
-        String ronec_test = RonecParser.toCsv(VALID_INPUT_PATH);
-        File.write(ronec_test, VALID_OUTPUT_PATH, false);
+        String ronec_test = RonecParser.toCsv(TEST_INPUT_PATH);
+        File.write(ronec_test, TEST_OUTPUT_PATH, false);
     }
 }
