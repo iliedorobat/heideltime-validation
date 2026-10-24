@@ -15,7 +15,7 @@ public class Timex3CsvFormatter implements ResultFormatter {
         while (iterator.hasNext()) {
             Timex3 timex = (Timex3) iterator.next();
 
-            String sentence = jcas.getDocumentText();
+            String sentence = jcas.getDocumentText().strip();
             String expression = sentence.substring(timex.getBegin(), timex.getEnd());
             String timexValue = timex.getTimexValue();
 
@@ -23,7 +23,7 @@ public class Timex3CsvFormatter implements ResultFormatter {
             csv.append(sentence).append('|')
                     .append(escape(timex.getTimexType())).append('|')
                     .append(expression).append("|")
-                    .append(filter(escape(timex.getTimexValue()), timex.getTimexType()))
+                    .append(filter(escape(timexValue), timex.getTimexType()))
                     .append('\n');
         }
 
