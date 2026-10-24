@@ -17,8 +17,13 @@ public class InpParser {
         StringBuilder sb = new StringBuilder();
         sb.append(HEADER);
 
+        System.out.println("total = " + expressions.length);
+
+        int index = 0;
         for (String timex : expressions) {
-            String value = Parser.toCsvLine(timex);
+            System.out.println("index = " + index++);
+
+            String value = Parser.toCsvLine(timex.strip());
 
             if (!value.isEmpty()) {
                 String[] rows = value.split("\n");
@@ -27,7 +32,7 @@ public class InpParser {
                     sb.append(row).append("\n");
                 }
             } else {
-                sb.append(timex).append("|").append("|").append("|\n");
+                sb.append(timex.strip()).append("|").append("|").append("|\n");
             }
         }
 

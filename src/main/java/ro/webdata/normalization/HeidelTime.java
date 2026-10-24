@@ -32,8 +32,7 @@ public class HeidelTime {
                 DocumentType.NARRATIVES,
                 OutputType.TIMEML,
                 config.toString(),
-//                POSTagger.TREETAGGER,
-                POSTagger.NO,
+                POSTagger.TREETAGGER,
                 false
         );
     }

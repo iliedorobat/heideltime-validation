@@ -18,9 +18,14 @@ public class RonecParser {
         StringBuilder sb = new StringBuilder();
         sb.append(HEADER);
 
+        System.out.println("total = " + sentences.size());
+        int index = 0;
+
         for (RonecSentence sentence : sentences) {
+            System.out.println("index = " + index++);
+
             for (RonecReader.Entity timex : extractTimeExpressions(sentence)) {
-                String value = Parser.toCsvLine(timex.text());
+                String value = Parser.toCsvLine(timex.text().strip());
 
                 if (!value.isEmpty()) {
                     String[] rows = value.split("\n");
@@ -29,7 +34,7 @@ public class RonecParser {
                         sb.append(sentence.getPlainSentence()).append("|").append(row).append("\n");
                     }
                 } else {
-                    sb.append(sentence.getPlainSentence()).append("|").append(timex).append("|").append("|").append("|\n");
+                    sb.append(sentence.getPlainSentence()).append("|").append(timex.text().strip()).append("|").append("|").append("|\n");
                 }
             }
         }
