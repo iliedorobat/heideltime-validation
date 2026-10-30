@@ -11,7 +11,7 @@ import static ro.webdata.normalization.ronec.RonecReader.extractTimeExpressions;
 import static ro.webdata.normalization.ronec.RonecReader.load;
 
 public class RonecParser {
-    private static final String HEADER = "sentence|ronec timespan|tag_type|entity|normalized\n";
+    private static final String HEADER = "id|sentence|ronec timespan|tag_type|entity|normalized\n";
 
     public static String toCsv(String filepath) throws DocumentCreationTimeMissingException, IOException {
         List<RonecSentence> sentences = load(Path.of(filepath));
@@ -31,10 +31,22 @@ public class RonecParser {
                     String[] rows = value.split("\n");
 
                     for (String row : rows) {
-                        sb.append(sentence.getPlainSentence()).append("|").append(row).append("\n");
+                        sb.append(sentence.id)
+                                .append("|")
+                                .append(sentence.getPlainSentence())
+                                .append("|")
+                                .append(row)
+                                .append("\n");
                     }
                 } else {
-                    sb.append(sentence.getPlainSentence()).append("|").append(timex.text().strip()).append("|").append("|").append("|\n");
+                    sb.append(sentence.id)
+                            .append("|")
+                            .append(sentence.getPlainSentence())
+                            .append("|")
+                            .append(timex.text().strip())
+                            .append("|")
+                            .append("|")
+                            .append("|\n");
                 }
             }
         }

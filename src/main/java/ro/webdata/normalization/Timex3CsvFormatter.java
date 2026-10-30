@@ -31,12 +31,12 @@ public class Timex3CsvFormatter implements ResultFormatter {
     }
 
     private static String filter(String value, String type) {
-        if (type.equals("DURATION") || type.equals("SET"))
-            return "";
-        else if (value.equals("PRESENT_REF"))
-            return "";
-        else if (value.startsWith("XXXX"))
-            return "";
+//        if (type.equals("DURATION") || type.equals("SET"))
+//            return "";
+//        else if (value.equals("PRESENT_REF"))
+//            return "";
+//        else if (value.startsWith("XXXX"))
+//            return "";
         return value;
     }
 
